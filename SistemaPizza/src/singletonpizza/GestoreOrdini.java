@@ -4,14 +4,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import magazzino.MagazzinoEsterno;
 import decoratorpizza.Pizza;
 import observer.OrdineObserver;
 
 public class GestoreOrdini {
+
+    private MagazzinoEsterno magazzino = new MagazzinoEsterno();
     private static GestoreOrdini instance;
 
     private Pizza pizzaCorrente;
     private ArrayList<String> storicoOrdini = new ArrayList<>();
+    private List<Pizza> listaOrdiniPizze = new ArrayList<>();
 
     private List<OrdineObserver> observerList = new ArrayList<>();
 
@@ -146,5 +150,9 @@ public class GestoreOrdini {
             System.out.println("Errore DB: " + e.getMessage());
         }
     }
+
+    public MagazzinoEsterno getMagazzino() {
+    return magazzino;
+}
 
 }

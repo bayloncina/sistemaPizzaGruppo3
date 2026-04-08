@@ -47,20 +47,32 @@ public class App {
                         System.out.println("Prima crea una pizza (opzione 1).");
                         break;
                     }
+
+                    gestore.getMagazzino().stampaDisponibilita();
+
                     System.out.println("Scegli ingrediente: 1) Mozzarella Extra  2) Salame  3) Funghi  4) Olive");
                     int e = sc.nextInt();
+
+                    String nomeIngrediente = switch (e) {
+                        case 2 -> "salame";
+                        case 3 -> "funghi";
+                        case 4 -> "olive";
+                        default -> "mozzarella";
+                    };
+
+                    if (!gestore.getMagazzino().disponibile(nomeIngrediente)) {
+                        System.out.println("Ingrediente esaurito: " + nomeIngrediente);
+                        break;
+                    }
+
                     Pizza decorata = switch (e) {
-                        case 2 -> if (disponibile("salame")) {
-                            new Salame(gestore.getPizzaCorrente());
-                        } else System.out.println("Il salame non è più disponibile");
-                        case 3 -> if (disponibile("funghi")) {
-                            new Funghi(gestore.getPizzaCorrente());
-                        } else System.out.println("I funghi non sono più disponibili");
-                        case 4 -> if (disponibile("Olive")) {
-                            new Olive(gestore.getPizzaCorrente());
-                        } else System.out.println("Le olive non sono più disponibili");
+                        case 2 -> new Salame(gestore.getPizzaCorrente());
+                        case 3 -> new Funghi(gestore.getPizzaCorrente());
+                        case 4 -> new Olive(gestore.getPizzaCorrente());
                         default -> new MozzarellaExtra(gestore.getPizzaCorrente());
                     };
+
+                    gestore.getMagazzino().consumaIngrediente(nomeIngrediente);
                     gestore.decoraPizzaCorrente(decorata);
                     System.out.println("Aggiunto! Pizza: " + decorata.getDescrizione());
                 }
