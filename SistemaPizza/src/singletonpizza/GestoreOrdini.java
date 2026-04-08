@@ -92,9 +92,9 @@ public class GestoreOrdini {
         ps.setString(1, pizzaCorrente.getDescrizione()); 
         ps.setDouble(2, pizzaCorrente.getCosto());
         ps.executeUpdate();
-    } catch (Exception e) {
-        System.out.println("Errore salvataggio ordine: " + e.getMessage());
-    }
+        } catch (Exception e) {
+            System.out.println("Errore salvataggio ordine: " + e.getMessage());
+        }
 
         storicoOrdini.add(riepilogo);
         System.out.println("Ordine confermato: " + riepilogo);
