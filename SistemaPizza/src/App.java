@@ -63,10 +63,18 @@ public class App {
                 case 5 -> {
                     gestore.visualizzaStoricoDb();
                     System.out.println("Scegli id pizza da cambiare: ");
-                    int cambio = sc.nextInt();
-                    System.out.println("Qual è lo stato della pizza attuale: ");
-                    String cambioStato = sc.nextLine();
-                    gestore.cambiaStatoOrdineDb(cambio, cambioStato);
+                    int cambioId = sc.nextInt();
+                    System.out.println("Scegli stato pizza:");
+                    System.out.println("1) CREATO  2) IN PREPARAZIONE  3) IN COTTURA  4) PRONTO  5) CONSEGNATO");
+                    int cambioStato = sc.nextInt();
+                    String statoPizza = switch (cambioStato) {
+                        case 2 -> "IN PREPARAZIONE";
+                        case 3 -> "IN COTTURA";
+                        case 4 -> "PRONTO";
+                        case 5 -> "CONSEGNATO";
+                        default -> "CREATO";
+                    };
+                    gestore.cambiaStatoOrdineDb(cambioId, statoPizza);
                 }
                 case 6 -> gestore.visualizzaStoricoDb();
                 case 0 -> esci = true;
