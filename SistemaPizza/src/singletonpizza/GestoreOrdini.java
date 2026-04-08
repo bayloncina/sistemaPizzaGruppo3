@@ -1,5 +1,7 @@
 package singletonpizza;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import decoratorpizza.Pizza;
@@ -53,6 +55,17 @@ public class GestoreOrdini {
         }
 
         String riepilogo = pizzaCorrente.getDescrizione() + " | " + pizzaCorrente.getCosto() + "E";
+
+        try {
+        Connection conn = DbConnection.getIstanzaDb().getConnection();
+        String query = "INSERT INTO ordini (descrizione, costo, stato) VALUES (?, ?, 'in_preparazione')";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, pizzaCorrente.getDescrizione()); 
+        ps.setDouble(2, pizzaCorrente.getCosto());
+        ps.executeUpdate();
+    } catch (Exception e) {
+        System.out.println("Errore salvataggio ordine: " + e.getMessage());
+    }
 
         storicoOrdini.add(riepilogo);
         System.out.println("Ordine confermato: " + riepilogo);
