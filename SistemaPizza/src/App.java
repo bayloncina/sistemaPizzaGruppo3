@@ -26,7 +26,6 @@ public class App {
             System.out.println("4 - Conferma ordine");
             System.out.println("5 - Cambia stato ordine");
             System.out.println("6 - Visualizza storico ordini");
-            System.out.println("7 - Modiica storico ordini");
             System.out.println("0 - Esci");
             System.out.print("Scelta: ");
 
@@ -62,27 +61,14 @@ public class App {
                 case 3 -> gestore.visualizzaOrdineCorrente();
                 case 4 -> gestore.confermaOrdine();
                 case 5 -> {
-                    System.out.println("Scegli stato:");
-                    System.out.println("1) CREATO  2) IN PREPARAZIONE  3) IN COTTURA  4) PRONTO  5) CONSEGNATO");
-                    int s = sc.nextInt();
-                    String stato = switch (s) {
-                        case 2 -> "IN PREPARAZIONE";
-                        case 3 -> "IN COTTURA";
-                        case 4 -> "PRONTO";
-                        case 5 -> "CONSEGNATO";
-                        default -> "CREATO";
-                    };
-                    gestore.cambiaStato(stato);
-                }
-                case 6 -> gestore.visualizzaStorico();
-                case 7 -> {
                     gestore.visualizzaStoricoDb();
                     System.out.println("Scegli id pizza da cambiare: ");
                     int cambio = sc.nextInt();
                     System.out.println("Qual è lo stato della pizza attuale: ");
                     String cambioStato = sc.nextLine();
-                    gestore.cambiaStatoDb(cambio, cambioStato);
+                    gestore.cambiaStatoOrdineDb(cambio, cambioStato);
                 }
+                case 6 -> gestore.visualizzaStoricoDb();
                 case 0 -> esci = true;
                 default -> System.out.println("Scelta non valida.");
             }
