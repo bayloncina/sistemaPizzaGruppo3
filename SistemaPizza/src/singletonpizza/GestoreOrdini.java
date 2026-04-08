@@ -20,18 +20,18 @@ public class GestoreOrdini {
         return instance;
     }
 
-    //imposta bevanda base corrente
+    //imposta oggetto base corrente
     public void setPizzaCorrente (Pizza pizza) {
         pizzaCorrente = pizza;
     }
 
-    //aggiungi decoratore alla bevanda corrente
+    //aggiungi decoratore all'oggetto corrente
     public void decoraPizzaCorrente (Pizza pizzaDecorata) {
         pizzaCorrente = pizzaDecorata;
     }
 
-    //getBevandaCorrente
-    public Pizza getBevandaCorrente() {
+    //getObjCorrente
+    public Pizza getPizzaCorrente() {
         return pizzaCorrente;
     }
 
