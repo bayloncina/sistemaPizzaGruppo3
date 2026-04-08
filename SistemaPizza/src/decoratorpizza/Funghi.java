@@ -2,7 +2,7 @@ package decoratorpizza;
 
 class Funghi extends DecoratorePizza {
 
-    public MozzarellaExtra(Funghi funghi) {
+    public Funghi(Pizza pizza) {
         super(pizza);
     }
 
