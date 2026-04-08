@@ -1,6 +1,6 @@
 package decoratorpizza;
 
-class Diavola implements Pizza {
+public class Diavola implements Pizza {
 
     public String getDescrizione() {
         return "Diavola";

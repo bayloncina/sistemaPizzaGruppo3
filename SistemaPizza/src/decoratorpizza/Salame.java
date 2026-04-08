@@ -1,6 +1,6 @@
 package decoratorpizza;
 
-class Salame extends DecoratorePizza {
+public class Salame extends DecoratorePizza {
 
     public Salame(Pizza pizza) {
         super(pizza);

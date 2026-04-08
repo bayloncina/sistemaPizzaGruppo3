@@ -3,8 +3,10 @@ package observer;
 public class Consegna implements OrdineObserver{
 
     @Override
-    public void statoOrdine() {
-        System.out.println("L'ordine è pronto");
+    public void statoOrdine(String stato) {
+        if (stato.equals("PRONTO")) {
+            System.out.println("L'ordine pronto per la consegna!");
+        }
     }
     
 }

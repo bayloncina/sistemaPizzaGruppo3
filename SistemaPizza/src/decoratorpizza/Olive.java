@@ -1,6 +1,6 @@
 package decoratorpizza;
 
-class Olive extends DecoratorePizza {
+public class Olive extends DecoratorePizza {
 
     public Olive(Pizza pizza) {
         super(pizza);

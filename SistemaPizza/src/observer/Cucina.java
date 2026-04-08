@@ -3,8 +3,10 @@ package observer;
 public class Cucina implements OrdineObserver{
 
     @Override
-    public void statoOrdine() {
-        System.out.println("L'ordine è Preparazione");
+    public void statoOrdine(String stato) {
+        if (stato.equals("IN PREPARAZIONE")) {
+            System.out.println("🍕 Cucina: ordine entrato in preparazione!");
+        }
     }
     
 }

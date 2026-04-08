@@ -2,6 +2,6 @@ package observer;
 
 public interface OrdineObserver {
 
-    void statoOrdine();
+    void statoOrdine(String stato);
     
 }

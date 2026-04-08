@@ -1,6 +1,6 @@
 package decoratorpizza;
 
-class Margherita implements Pizza {
+public class Margherita implements Pizza {
 
     public String getDescrizione() {
         return "Margherita";

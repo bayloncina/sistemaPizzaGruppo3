@@ -1,8 +1,10 @@
 package singletonpizza;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import decoratorpizza.Pizza;
+import observer.OrdineObserver;
 
 public class GestoreOrdini {
     private static GestoreOrdini instance;
@@ -10,8 +12,35 @@ public class GestoreOrdini {
     private Pizza pizzaCorrente;
     private ArrayList<String> storicoOrdini = new ArrayList<>();
 
-    //costruttore privato impedisce new GestoreOrdini all'esterno
-    private GestoreOrdini() {}
+    private String statoCorrente = "CREATO";
+    private List<OrdineObserver> observerList = new ArrayList<>();
+
+    public void aggiungiObserver(OrdineObserver o) {
+        observerList.add(o);
+    }
+
+    // rimuove un observer
+    public void rimuoviObserver(OrdineObserver o) {
+        observerList.remove(o);
+    }
+
+    // notifica tutti gli observer con il nuovo stato
+    private void notificaObservers(String stato) {
+        for (OrdineObserver o : observerList) {
+            o.statoOrdine(stato);
+        }
+    }
+
+    // cambia lo stato dell'ordine e notifica gli observer
+    public void cambiaStato(String stato) {
+        this.statoCorrente = stato;
+        System.out.println("Stato ordine aggiornato: " + stato);
+        notificaObservers(stato);
+    }
+
+    // costruttore privato impedisce new GestoreOrdini all'esterno
+    private GestoreOrdini() {
+    }
 
     public static GestoreOrdini getInstance() {
         if (instance == null) {
@@ -20,22 +49,22 @@ public class GestoreOrdini {
         return instance;
     }
 
-    //imposta bevanda base corrente
-    public void setPizzaCorrente (Pizza pizza) {
+    // imposta bevanda base corrente
+    public void setPizzaCorrente(Pizza pizza) {
         pizzaCorrente = pizza;
     }
 
-    //aggiungi decoratore alla bevanda corrente
-    public void decoraPizzaCorrente (Pizza pizzaDecorata) {
+    // aggiungi decoratore alla bevanda corrente
+    public void decoraPizzaCorrente(Pizza pizzaDecorata) {
         pizzaCorrente = pizzaDecorata;
     }
 
-    //getBevandaCorrente
+    // getBevandaCorrente
     public Pizza getBevandaCorrente() {
         return pizzaCorrente;
     }
 
-    //stampa ordine corrente
+    // stampa ordine corrente
     public void visualizzaOrdineCorrente() {
         if (pizzaCorrente == null) {
             System.out.println("Nessuna pizza selezionata.");
@@ -45,8 +74,8 @@ public class GestoreOrdini {
         System.out.printf("Costo totale: " + pizzaCorrente.getCosto());
     }
 
-    //conferma ordine corrente
-    public void confermaOrdine () {
+    // conferma ordine corrente
+    public void confermaOrdine() {
         if (pizzaCorrente == null) {
             System.out.println("Nessuna pizza selezionata.");
             return;
@@ -59,7 +88,7 @@ public class GestoreOrdini {
         pizzaCorrente = null;
     }
 
-    //stampa storico ordine
+    // stampa storico ordine
     public void visualizzaStorico() {
         if (storicoOrdini.isEmpty()) {
             System.out.println("Nessun ordine nello storico.");
