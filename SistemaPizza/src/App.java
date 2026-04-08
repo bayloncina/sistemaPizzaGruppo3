@@ -50,23 +50,23 @@ public class App {
                     System.out.println("Scegli ingrediente: 1) Mozzarella Extra  2) Salame  3) Funghi  4) Olive");
                     int e = sc.nextInt();
                     Pizza decorata = switch (e) {
-                        case 1 -> if (disponibile("mozzarellaextra")) {
+                        case 1: if (disponibile("mozzarellaextra")) {
                             new MozzarellaExtra(gestore.getPizzaCorrente());
                             consumaIngrediente("mozzarellaextra");
                         } else System.out.println("La mozzarella non è più disponibile");
-                        case 2 -> if (disponibile("salame")) {
+                        case 2: if (disponibile("salame")) {
                             new Salame(gestore.getPizzaCorrente());
                             consumaIngrediente("salame");
                         } else System.out.println("Il salame non è più disponibile");
-                        case 3 -> if (disponibile("funghi")) {
+                        case 3: if (disponibile("funghi")) {
                             new Funghi(gestore.getPizzaCorrente());
                             consumaIngrediente("funghi");
                         } else System.out.println("I funghi non sono più disponibili");
-                        case 4 -> if (disponibile("Olive")) {
+                        case 4: if (disponibile("Olive")) {
                             new Olive(gestore.getPizzaCorrente());
                             consumaIngrediente("olive");
                         } else System.out.println("Le olive non sono più disponibili");
-                        default -> 
+                        default: System.out.println("non disponibile"); 
                     };
                     gestore.decoraPizzaCorrente(decorata);
                     System.out.println("Aggiunto! Pizza: " + decorata.getDescrizione());
