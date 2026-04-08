@@ -42,17 +42,17 @@ public class App {
                     System.out.println("Pizza creata: " + pizza.getDescrizione());
                 }
                 case 2 -> {
-                    if (gestore.getBevandaCorrente() == null) {
+                    if (gestore.getPizzaCorrente() == null) {
                         System.out.println("Prima crea una pizza (opzione 1).");
                         break;
                     }
                     System.out.println("Scegli ingrediente: 1) Mozzarella Extra  2) Salame  3) Funghi  4) Olive");
                     int e = sc.nextInt();
                     Pizza decorata = switch (e) {
-                        case 2 -> new Salame(gestore.getBevandaCorrente());
-                        case 3 -> new Funghi(gestore.getBevandaCorrente());
-                        case 4 -> new Olive(gestore.getBevandaCorrente());
-                        default -> new MozzarellaExtra(gestore.getBevandaCorrente());
+                        case 2 -> new Salame(gestore.getPizzaCorrente());
+                        case 3 -> new Funghi(gestore.getPizzaCorrente());
+                        case 4 -> new Olive(gestore.getPizzaCorrente());
+                        default -> new MozzarellaExtra(gestore.getPizzaCorrente());
                     };
                     gestore.decoraPizzaCorrente(decorata);
                     System.out.println("Aggiunto! Pizza: " + decorata.getDescrizione());
