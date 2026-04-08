@@ -42,14 +42,12 @@ public class App {
                     System.out.println("Pizza creata: " + pizza.getDescrizione());
                 }
                 case 2 -> {
-                    // ✅ FIX: era getBevandaCorrente() — metodo inesistente
                     if (gestore.getPizzaCorrente() == null) {
                         System.out.println("Prima crea una pizza (opzione 1).");
                         break;
                     }
                     System.out.println("Scegli ingrediente: 1) Mozzarella Extra  2) Salame  3) Funghi  4) Olive");
                     int e = sc.nextInt();
-                    // ✅ FIX: era getBevandaCorrente() — ora usa getPizzaCorrente()
                     Pizza decorata = switch (e) {
                         case 2 -> new Salame(gestore.getPizzaCorrente());
                         case 3 -> new Funghi(gestore.getPizzaCorrente());
