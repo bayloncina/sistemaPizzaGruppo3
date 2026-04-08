@@ -1,12 +1,13 @@
 import decoratorpizza.*;
 import observer.*;
+import singletonpizza.DbConnection;
 import singletonpizza.GestoreOrdini;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-
+        DbConnection.getIstanzaDb().connect();
         GestoreOrdini gestore = GestoreOrdini.getInstance();
 
         // registra gli observer
