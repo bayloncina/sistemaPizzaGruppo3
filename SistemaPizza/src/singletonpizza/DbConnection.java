@@ -10,13 +10,14 @@ public class DbConnection {
 
     // ho già creato il db pizzeria_db con la tabella ordini
     /*
-     * CREATE DATABASE pizzeria_db;
+     * CREATE DATABASE IF NOT EXISTS pizzeria_db;
      * USE pizzeria_db;
-     * CREATE TABLE ordini (
-     * id INT AUTO_INCREMENT PRIMARY KEY,
-     * descrizione VARCHAR(255) NOT NULL,
-     * costo DOUBLE NOT NULL,
-     * data_ordine TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+     * 
+     * CREATE TABLE IF NOT EXISTS ordini (
+     *      id INT AUTO_INCREMENT PRIMARY KEY,
+     *      descrizione VARCHAR(255) NOT NULL,
+     *      costo DOUBLE NOT NULL,
+     *      data_ordine TIMESTAMP DEFAULT CURRENT_TIMESTAMP
      * );
      */
 
